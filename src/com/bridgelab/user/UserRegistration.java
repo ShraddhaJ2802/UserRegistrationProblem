@@ -43,4 +43,22 @@ public class UserRegistration {
             System.out.println("Last Name invalid");
         }
     }
+    //UC3
+    // Method Checking Email with regex pattern
+    public void checkEmail() {
+        System.out.println("Enter the Email : ");
+        String eMail = scan.nextLine();
+        // Creating/Defining a pattern to be searched
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([.][0-9a-zA-Z]+)*@[a-zA-Z]+.[a-z]{2,3}([.][a-z]{2,3})*$");
+        // matcher searching the above pattern with Email
+        Matcher matcher = pattern.matcher(eMail);
+        // matchFound store true if pattern matches
+        boolean matchFound = matcher.find();
+        if (matchFound) {
+            System.out.println("Email is valid");
+        } else {
+            System.out.println("Email is invalid. Enter Email Again ");
+            checkEmail();
+        }
+    }
 }
