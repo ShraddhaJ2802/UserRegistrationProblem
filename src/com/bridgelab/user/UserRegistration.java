@@ -1,6 +1,7 @@
 package com.bridgelab.user;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
@@ -9,6 +10,8 @@ public class UserRegistration {
     Scanner scan = new Scanner(System.in);
 
     // Method Checking FirstName with regex pattern
+
+    //UC1
     public void checkFirstName() {
         System.out.println("Enter the first name :");
         String firstName = scan.nextLine();
@@ -20,6 +23,24 @@ public class UserRegistration {
             System.out.println("first name is valid");
         } else {
             System.out.println("first name invalid");
+        }
+    }
+
+    //UC2
+    public void checkLastName() {
+        System.out.println("Enter the Last name : ");
+        String lastName = scan.nextLine();
+        // Creating/Defining a pattern to be searched
+        Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}");
+        // matcher searching the above pattern with lastName
+        Matcher matcher = pattern.matcher(lastName);
+        // matchFound store true if pattern matches
+        boolean matchFound = matcher.find();
+        // Name - Last name starts with Cap and has minimum 3 characters
+        if (matchFound) {
+            System.out.println("Last Name is valid");
+        } else {
+            System.out.println("Last Name invalid");
         }
     }
 }
